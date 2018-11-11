@@ -1,4 +1,6 @@
 const graphql = require('graphql')
+const data = require('./data')
+const _ = require('lodash')
 
 // grap graphql types into..
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql
@@ -19,6 +21,9 @@ const RootQuery = new GraphQLObjectType({
             type: BookType,
             args: {
                 id: { type: GraphQLString}
+            },
+            resolve(parent, args){
+               return _.find(data, {id: args.id})
             }
         }
     }
