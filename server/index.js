@@ -6,7 +6,8 @@ const PORT = 4000
 const app = express()
 
 app.use('/graphql', graphqlHTTP({
-    schema: graphqlSchema
+    schema: graphqlSchema,
+    graphiql: true
 }))
 
 app.listen( PORT, () => {
