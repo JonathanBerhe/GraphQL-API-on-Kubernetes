@@ -2,7 +2,7 @@ const graphql = require('graphql')
 const data = require('./data')
 const { find, filter } = require('lodash')
 
-// grap graphql types 
+// graphql types 
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -51,7 +51,7 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: GraphQLID }
             },
             resolve(parent, args) {
-                return _.find(data.book, { id: args.id })
+                return find(data.book, { id: args.id })
             }
         },
         books: {
@@ -65,7 +65,7 @@ const RootQuery = new GraphQLObjectType({
             args: {
                 id: { type: GraphQLID }
             },
-            resolve(parent, args) { return _.find(data.author, { id: args.id }) }
+            resolve(parent, args) { return find(data.author, { id: args.id }) }
         },
         authors: {
             type: new GraphQLList(AuthorType),
